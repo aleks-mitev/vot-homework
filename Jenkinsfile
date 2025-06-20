@@ -6,8 +6,11 @@ pipeline {
     }
     stages {
         stage('Checkout') {
-            steps { checkout scm }
+            steps {
+                git url: 'https://github.com/aleks-mitev/vot-homework.git', branch: 'main'
+            }
         }
+
         stage('Build') {
             steps { sh "docker build -t $IMAGE ." }
         }
